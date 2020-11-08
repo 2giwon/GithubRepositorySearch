@@ -21,7 +21,6 @@ object Dependencies {
     private const val HILT_VER = "2.28-alpha"
     private const val LIFECYCLE_VER = "2.2.0"
     private const val HILT_JETPACK_VER = "1.0.0-alpha01"
-    private const val GLIDE_VER = "4.11.0"
     private const val RXJAVA_VER = "2.2.16"
 
     const val KOTLIN_STDLIB = "org.jetbrains.kotlin:kotlin-stdlib:${Version.KOTLIN}"
