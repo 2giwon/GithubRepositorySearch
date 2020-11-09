@@ -20,6 +20,7 @@ class MainActivity : AppCompatActivity() {
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding.lifecycleOwner = this
+        binding.vm = viewModel
 
         binding.buttonSearch.setOnClickListener {
             viewModel.getRepository(binding.editSearch.text.toString())
