@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.DividerItemDecoration
 import dagger.hilt.android.AndroidEntryPoint
 import kr.eg.egiwon.githubrepositorysearch.R
 import kr.eg.egiwon.githubrepositorysearch.databinding.ActivityMainBinding
@@ -19,11 +20,30 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        binding.lifecycleOwner = this
-        binding.vm = viewModel
+        binding.run {
+            lifecycleOwner = this@MainActivity
+            vm = viewModel
+            initAdapter()
 
-        binding.buttonSearch.setOnClickListener {
-            viewModel.getRepository(binding.editSearch.text.toString())
+            buttonSearch.setOnClickListener {
+                viewModel.getRepository(binding.editSearch.text.toString())
+            }
         }
+
     }
+
+    private fun ActivityMainBinding.initAdapter() {
+        with(rvResult) {
+            adapter = RepositoryAdapter()
+            setHasFixedSize(true)
+            addItemDecoration(
+                DividerItemDecoration(
+                    this@MainActivity,
+                    DividerItemDecoration.VERTICAL
+                )
+            )
+        }
+
+    }
+
 }

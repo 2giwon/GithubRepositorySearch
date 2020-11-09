@@ -5,6 +5,9 @@
 
     <data>
 
+        <variable
+            name="repositoryItem"
+            type="kr.eg.egiwon.githubrepositorysearch.main.model.Repository" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -18,6 +21,7 @@
             android:layout_height="wrap_content"
             android:textSize="20dp"
             android:textStyle="bold"
+            android:text="@{repositoryItem.name}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="타이틀" />
@@ -27,6 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="16dp"
+            android:text="@{repositoryItem.gitUrl}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_title"
             tools:text="http://github.com/" />
@@ -36,6 +41,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="16dp"
+            android:text="@{String.format(@string/fork_count, repositoryItem.forksCount)}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_url"
             tools:text="fork : 200" />
@@ -45,6 +51,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="16dp"
+            android:text="@{repositoryItem.ownerItem.url}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_fork_count"
             tools:text="http://github.com/owner" />
