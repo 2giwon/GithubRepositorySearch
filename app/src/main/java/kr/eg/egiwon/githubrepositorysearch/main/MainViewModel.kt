@@ -24,14 +24,16 @@ class MainViewModel @ViewModelInject constructor(
     val resultRepository: LiveData<List<Repository>> get() = _resultRepository
 
     fun getRepository(query: String) {
-        repository.getRepository(query)
-            .subscribeOn(Schedulers.io())
-            .map {
-                it.repositoryItems.map(RepositoryItem::mapToRepository)
-            }
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribeBy {
-                _resultRepository.value = it
-            }.addTo(compositeDisposable)
+        if (query.isNotEmpty()) {
+            repository.getRepository(query)
+                .subscribeOn(Schedulers.io())
+                .map {
+                    it.repositoryItems.map(RepositoryItem::mapToRepository)
+                }
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeBy {
+                    _resultRepository.value = it
+                }.addTo(compositeDisposable)
+        }
     }
 }
