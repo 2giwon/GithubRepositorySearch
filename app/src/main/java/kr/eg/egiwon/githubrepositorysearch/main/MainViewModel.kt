@@ -23,10 +23,15 @@ class MainViewModel @ViewModelInject constructor(
     private val _resultRepository = MutableLiveData<List<Repository>>()
     val resultRepository: LiveData<List<Repository>> get() = _resultRepository
 
+    private val _loadingBar = MutableLiveData<Boolean>()
+    val loadingBar: LiveData<Boolean> get() = _loadingBar
+
     fun getRepository(query: String) {
         if (query.isNotEmpty()) {
             repository.getRepository(query)
                 .subscribeOn(Schedulers.io())
+                .doOnSubscribe { _loadingBar.postValue(true) }
+                .doAfterTerminate { _loadingBar.postValue(false) }
                 .map {
                     it.repositoryItems.map(RepositoryItem::mapToRepository)
                 }

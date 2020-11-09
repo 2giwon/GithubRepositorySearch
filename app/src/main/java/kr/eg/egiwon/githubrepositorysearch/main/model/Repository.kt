@@ -1,6 +1,5 @@
 package kr.eg.egiwon.githubrepositorysearch.main.model
 
-import kr.eg.egiwon.githubrepositorysearch.data.entity.OwnerResponse
 import kr.eg.egiwon.githubrepositorysearch.data.entity.RepositoryItem
 
 data class Repository(
@@ -9,7 +8,7 @@ data class Repository(
     val gitUrl: String = "",
     val id: Int = 0,
     val name: String = "",
-    val ownerResponse: OwnerResponse = OwnerResponse(),
+    val ownerItem: OwnerItem = OwnerItem(),
     val stargazersCount: Int = 0
 )
 
@@ -19,6 +18,6 @@ fun RepositoryItem.mapToRepository(): Repository = Repository(
     gitUrl = gitUrl,
     id = id,
     name = name,
-    ownerResponse = ownerResponse,
+    ownerItem = ownerResponse.mapToOwner(),
     stargazersCount = stargazersCount
 )
