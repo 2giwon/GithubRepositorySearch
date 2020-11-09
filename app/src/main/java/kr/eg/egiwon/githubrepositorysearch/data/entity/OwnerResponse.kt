@@ -2,7 +2,7 @@ package kr.eg.egiwon.githubrepositorysearch.data.entity
 
 import com.google.gson.annotations.SerializedName
 
-data class Owner(
+data class OwnerResponse(
     @SerializedName("id")
     val id: Int = 0,
     @SerializedName("type")

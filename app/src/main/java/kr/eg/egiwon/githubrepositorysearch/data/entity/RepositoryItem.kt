@@ -2,7 +2,7 @@ package kr.eg.egiwon.githubrepositorysearch.data.entity
 
 import com.google.gson.annotations.SerializedName
 
-data class Item(
+data class RepositoryItem(
     @SerializedName("forks_count")
     val forksCount: Int = 0,
     @SerializedName("full_name")
@@ -14,7 +14,7 @@ data class Item(
     @SerializedName("name")
     val name: String = "",
     @SerializedName("owner")
-    val owner: Owner = Owner(),
+    val ownerResponse: OwnerResponse = OwnerResponse(),
     @SerializedName("stargazers_count")
     val stargazersCount: Int = 0
 )

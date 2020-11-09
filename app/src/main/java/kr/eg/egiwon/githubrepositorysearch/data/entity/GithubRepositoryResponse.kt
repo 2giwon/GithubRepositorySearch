@@ -6,7 +6,7 @@ data class GithubRepositoryResponse(
     @SerializedName("incomplete_results")
     val incompleteResults: Boolean = false,
     @SerializedName("items")
-    val items: List<Item> = emptyList(),
+    val repositoryItems: List<RepositoryItem> = emptyList(),
     @SerializedName("total_count")
     val totalCount: Int = 0
 )
